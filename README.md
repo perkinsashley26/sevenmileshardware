@@ -1,7 +1,5 @@
 # How to run
 
----
-
 1. Create a virtual environment by using
 
 ```
