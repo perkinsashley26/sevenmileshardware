@@ -1,12 +1,12 @@
 # How to run
 
-1. Create a virtual environment by using
+1. Create a virtual environment by running:
 
 ```
 python -m venv venv
 ```
 
-2. Install the required pip packages:
+2. Install the required pip packages by running:
 
 ```
 pip install -r requirements.txt
