@@ -1,5 +1,6 @@
-from app import Server
+"""The main driver of the application."""
+from persistence import flask_server
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    flask_server.run(debug=True)

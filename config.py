@@ -1,5 +1,4 @@
 """Configures the Flask Object."""
-
 import os
 
 
