@@ -14,4 +14,9 @@ from wtforms import (
 
 class ProductForm(FlaskForm):
     """Form for adding products."""
-    pass
+    name= StringField('Name',[validators.DataRequired()])
+    price= DecimalField('Price', [validators.DataRequired()])
+    stock= IntegerField('Stock', [validators.DataRequired()])
+    description= TextAreaField('Description', [validators.DataRequired()])
+    prod_image = FileField('Photo Upload', validators= [FileAllowed(['jpg','png','Images only!'])])
+    
