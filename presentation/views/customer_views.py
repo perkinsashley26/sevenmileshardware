@@ -6,8 +6,11 @@ from flask import render_template, request, redirect, url_for, flash
 # Model imports
 from persistence.models.product_models import ProductModel
 from persistence.models.user_models import UserModel
+from persistence.models import db
 
 # Form imports
+from persistence.forms.user_forms import LoginForm, RegistrationForm
+
 
 class Home(View):
     """Class based View/Route for the Landing Page."""
@@ -16,7 +19,7 @@ class Home(View):
     name = 'home'
 
     def dispatch_request(self):
-        return render_template("pages/index.html")
+        return render_template("index.html")
 
 class Catalogue(View):
     """Class based View/Route for the Catalogue."""
@@ -34,7 +37,16 @@ class Register(View):
     name = 'register'
 
     def dispatch_request(self):
-        return render_template("pages/register.html")
+        form = RegistrationForm(request.form)
+        if request.method == 'POST' and form.validate():
+            user = UserModel(name=form.name.data,username=form.username.data, email=form.email.data,
+                    password=form.password.data)
+            db.session.add(user)
+            #User.query.delete()
+            db.session.commit()
+            flash(f'Welcome {form.name.data} Thanks for registering', 'success')
+            return redirect(url_for('login'))
+        return render_template('admin/register.html', form=form, title="Registration Page")
 
 class Login(View):
     """Class based View/Route for Login."""
@@ -43,7 +55,16 @@ class Login(View):
     name = 'login'
 
     def dispatch_request(self):
-        return render_template("pages/login.html")
+        form = LoginForm()
+        if request.method=="POST" and form.validate():
+            user = UserModel.query.filter_by(email=form.email.data).first()
+            if user:
+                session['email']= form.email.data
+                flash(f'Welcome {form.email.data} Succesfully Logged In', 'success')
+                return redirect(request.args.get('next') or url_for('admin'))
+            else:
+                flash('Wrong Password Please Try Again', 'danger')
+        return render_template('admin/login.html', form= form, title="Login Page")
 
 class CustomerViews(object):
     views = {
