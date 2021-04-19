@@ -1,7 +1,7 @@
 
 # Import modules required for routing
 from flask.views import View
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, session
 
 # Model imports
 from persistence.models.product_models import ProductModel
@@ -47,6 +47,7 @@ class Register(View):
             flash(f'Welcome {form.name.data} Thanks for registering', 'success')
             return redirect(url_for('login'))
         return render_template('admin/register.html', form=form, title="Registration Page")
+
 
 class Login(View):
     """Class based View/Route for Login."""
