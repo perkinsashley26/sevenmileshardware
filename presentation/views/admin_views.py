@@ -41,9 +41,9 @@ class AddProduct(View):
     name = 'add_product'
 
     def dispatch_request(self):
-        if 'email' not in session:
-            flash(f'Please login first','danger')
-            return redirect(url_for('login'))
+       # if 'email' not in session:
+         #   flash(f'Please login first','danger')
+           # return redirect(url_for('login'))
         if request.method=="POST":
             getproduct = request.form.get('product')
             product= ProductModel(name=getproduct)
@@ -54,15 +54,15 @@ class AddProduct(View):
         return render_template('products/addproduct.html', products='products')
 
 class AddCategory(View):
-    """Class based View/Route for the Product Manager Page."""
+    """Class based View/Route for the Add CategoryPage."""
     methods = ['GET', 'POST', 'PUT']
     endpoint = '/admin/add_category'
     name = 'add_category'
     
     def dispatch_request(self):
-        if 'email' not in session:
-            flash(f'Please login first','danger')
-            return redirect(url_for('login'))
+      #  if 'email' not in session:
+         #   flash(f'Please login first','danger')
+           # return redirect(url_for('login'))
 
         if request.method=="POST":
             getproduct = request.form.get('category')
@@ -73,10 +73,38 @@ class AddCategory(View):
             return redirect(url_for('addcategory'))
         return render_template('products/addproduct.html')
 
+class ViewCategories(View):
+    methods = ['GET']
+    endpoint = '/admin/view_categories'
+    name = 'view_categories'
+
+    def dispatch_request(self):
+       # if 'email' not in session:
+          #  flash(f'Please login first','danger')
+           # return redirect(url_for('login'))
+        # categories = CategoryModel.query.order_by(CategoryModel.id.desc()).all()
+        categories = []
+        return render_template('admin/product.html',title="Product Page",categories=categories)
+
+class ViewProducts(View):
+    methods = ['GET']
+    endpoint = '/admin/view_products'
+    name = 'view_products'
+
+    def dispatch_request(self):
+      #  if 'email' not in session:
+         #   flash(f'Please login first','danger')
+          #  return redirect(url_for('login'))
+      #  products = ProductModel.query.all()
+        products = []
+        return render_template('admin/product.html', title="Product Page", products=products)
+
 class AdminViews(object):
     views = {
         'view_orders': ViewOrders,
+        'view_products': ViewProducts,
+        'view_categories': ViewCategories,
         'manage_inventory': InventoryManager,
         'add_product': AddProduct,
-        'add_category': AddCategory
+        'add_category': AddCategory,
     }
