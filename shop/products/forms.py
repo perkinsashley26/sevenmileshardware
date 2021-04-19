@@ -8,5 +8,5 @@ class Addproducts(Form):
     stock= IntegerField('Stock', [validators.DataRequired()])
     description= TextAreaField('Description', [validators.DataRequired()])
     image1 = FileField('Photo Upload 1', validators= [FileAllowed(['jpg','png','Images only!'])])
-    image2 = FileField('Photo Upload 2', validators= [FileAllowed(['jpg','png','Images only!'])])
-    image3 = FileField('Photo Upload 3', validators= [FileAllowed(['jpg','png','Images only!'])])
+    #image2 = FileField('Photo Upload 2', validators= [FileAllowed(['jpg','png','Images only!'])])
+    #image3 = FileField('Photo Upload 3', validators= [FileAllowed(['jpg','png','Images only!'])])
