@@ -1,0 +1,18 @@
+{% extends "components/base.html" %}
+<!---->
+{% block css %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/inventory_manager.css')}}"
+/>
+{% endblock %}
+<!---->
+{% block main %}
+<!-- Insert Content Here -->
+<div id="inventory_manager">
+  <div class="container">
+    <nav>{% include "components/admin_nav.html" %}</nav>
+    <h1>Manage Inventory</h1>
+  </div>
+</div>
+{% endblock %}

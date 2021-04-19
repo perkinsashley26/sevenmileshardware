@@ -1,6 +1,3 @@
-"""Initializes the persistence layer."""
-from app import Server
+from flask_sqlalchemy import SQLAlchemy
 
-# Instantiate only one instance of the server to adhere to singleton pattern
-flask_server = Server()
-db = flask_server.db
+db = SQLAlchemy()

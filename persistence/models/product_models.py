@@ -1,7 +1,7 @@
 """Defines SQLAlchemy models for Product data."""
-from . import db
-import datetime
+from datetime import datetime
 
+from . import db
 
 class ProductModel(db.Model):
     """Defines the database object model for a Product."""
@@ -38,7 +38,7 @@ class OrderModel(db.Model):
 
     # Date order was made
     order_date=db.Column(
-        db.DateTime, unique=False, nullable=False,default=datetime.utcnow) 
+        db.DateTime, unique=False, nullable=False,default=datetime.utcnow()) 
     
     complete = db.Column(db.Boolean, default=False)
 
@@ -51,7 +51,7 @@ class OrderModel(db.Model):
 
     
 
-class OrderItemModel(db.model):
+class OrderItemModel(db.Model):
     """Defines the database object model for an Order Item."""
 
     __tablename__ = 'order_items'

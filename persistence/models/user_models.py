@@ -1,7 +1,6 @@
 """Defines SQLAlchemy models for User data."""
 from . import db
 
-
 class UserModel(db.Model):
     """The database table for Users."""
 

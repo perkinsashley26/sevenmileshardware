@@ -1,0 +1,21 @@
+{% extends "components/base.html" %}
+<!---->
+{% block css %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static', filename='css/catalogue.css')}}"
+/>
+{% endblock %}
+<!---->
+{% block main %}
+<!-- Insert Content Here -->
+<div class="container">
+  <nav>{% include "components/nav.html" %}</nav>
+  <div id="catalogue">
+    <section id="banner">Catalogue Banner</section>
+    <section id="catalogue-items">
+      <!-- Render out Catalogue Items here-->
+    </section>
+  </div>
+</div>
+{% endblock %}
