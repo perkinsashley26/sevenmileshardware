@@ -54,7 +54,7 @@ class OrderModel(db.Model):
 class OrderItemModel(db.Model):
     """Defines the database object model for an Order Item."""
 
-    __tablename__ = 'order_items'
+    __tablename__ = 'orderitems'
 
     id = db.Column(db.Integer, primary_key=True)
 

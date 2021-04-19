@@ -7,3 +7,5 @@ flask_server = Server(template_dir="presentation/templates", static_path='presen
 from .models import db 
 
 db.init_app(flask_server)
+with flask_server.app_context():
+    db.create_all()

@@ -38,7 +38,8 @@ class Register(View):
 
     def dispatch_request(self):
         form = RegistrationForm(request.form)
-        if request.method == 'POST' and form.validate():
+        if request.method == 'POST' and form.validate_on_submit():
+            print('here')
             user = UserModel(name=form.name.data,username=form.username.data, email=form.email.data,
                     password=form.password.data)
             db.session.add(user)
